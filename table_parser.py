@@ -14,6 +14,10 @@ if __name__ == "__main__":
     parser_grouped.add_argument("--grouped", help="group systematics", action="store_true")
     parser_grouped.add_argument("--ungrouped", help="do *not* group systematics", action="store_false")
 
+    # Add optional arguments for file output
+    parser.add_argument("--json", dest="json_file", help="output a JSON file")
+    parser.add_argument("--tex", dest="tex_file", help="output a LaTeX file")
+
     args = parser.parse_args()
 
     if args.grouped:
@@ -25,6 +29,13 @@ if __name__ == "__main__":
     rows = table.getRows()
     columns = table.getColumns()
     dict = table.getEntries()
+
+    if args.json_file:
+        print "Printing to JSON file not yet implemented"
+        sys.exit(1)
+    if args.tex_file:
+        print "Printing to TEX file not yet implemented"
+        sys.exit(1)
 
     for row in rows:
         for column in columns:

@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from math import sqrt
 import json
 
 # A simple class to read in a JSON file that holds list of systematic
@@ -49,3 +50,16 @@ class SystCalculator():
         self._table = table
         self._syst_dict = syst_dict
         self._columns = columns
+
+    # Calculate the up/down variations for a given group of systematics and a
+    # column of the table.
+    def _calc_value(self, group, column):
+        plus_var = 0.
+        minus_var = 0.
+        for systematic in self._syst_dict.lookupGroup(group):
+            # Make sure that the dictionary entry exists
+            if systematic not in self._table: continue
+            if column not in self._table[systematic]: continue
+            plus_var += float(self._table[systematic][column][0])
+            minus_var += float(self._table[systematic][column][1])
+        return (sqrt(plus_var) if plus_var > 0 else 0, sqrt(minus_var) if minus_var > 0 else 0)

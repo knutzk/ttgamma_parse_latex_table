@@ -32,7 +32,7 @@ if __name__ == "__main__":
     dict = table.getEntries()
 
     if args.json_file:
-        table_to_file.storeJSON(table, "test.json")
+        table_to_file.storeJSON(table, args.json_file)
     if args.tex_file:
         print "Printing to TEX file not yet implemented"
         sys.exit(1)

@@ -32,8 +32,12 @@ if __name__ == "__main__":
     # ======================================================
     # Start the main execution here
     # ======================================================
-    table = latex_table.readFromLatex(args.input).getEntries()
 
+    # Retrieve the table from the input file, save all columns it
+    # contains, and store all entries as a dictionary.
+    table = latex_table.readFromLatex(args.input)
+    columns = table.getColumns()
+    table = table.getEntries()
 
     if args.json_file:
         dict_to_file.storeJSON(table, args.json_file)

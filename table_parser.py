@@ -5,6 +5,7 @@ import latex_table
 from syst_calculator import SystDictionary
 import dict_to_file
 
+
 if __name__ == "__main__":
     # Parse arguments
     import argparse
@@ -28,16 +29,20 @@ if __name__ == "__main__":
         systs = dict.getSystematics()
         sys.exit(1)
 
+    # ======================================================
+    # Start the main execution here
+    # ======================================================
     table = latex_table.readFromLatex(args.input)
 
-    rows = table.getRows()
-    columns = table.getColumns()
-    dict = table.getEntries()
 
     if args.json_file:
         dict_to_file.storeJSON(table.getEntries(), args.json_file)
     if args.tex_file:
         dict_to_file.storeTEX(table.getEntries(), args.tex_file)
+
+    rows = table.getRows()
+    columns = table.getColumns()
+    dict = table.getEntries()
 
     for row in rows:
         for column in columns:

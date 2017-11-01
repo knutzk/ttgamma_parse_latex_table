@@ -23,7 +23,7 @@ def storeTEX(dict, file_string):
         for row in dict:
             fp.write("  %s " % (row))
             for column in dict[row]:
-                fp.write("& %s " % dict[row][column])
+                fp.write("& %s / %s " % (dict[row][column][0], dict[row][column][1]))
             fp.write("\\\\\n")
         fp.write("  \\hline\n")
         fp.write("\\end{tabular}\n")

@@ -2,7 +2,9 @@
 
 import sys
 import latex_table
-import table_to_file
+from syst_calculator import SystDictionary
+import dict_to_file
+
 
 if __name__ == "__main__":
     # Parse arguments
@@ -21,21 +23,35 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.grouped:
-        print "Grouping systematics is not yet implemented"
-        sys.exit(1)
 
+    # ======================================================
+    # Start the main execution here
+    # ======================================================
+
+    # Retrieve the table from the input file, save all columns it
+    # contains, and store all entries as a dictionary.
     table = latex_table.readFromLatex(args.input)
-
-    rows = table.getRows()
     columns = table.getColumns()
-    dict = table.getEntries()
+    table = table.getEntries()
+
+    # Load a JSON dictionary that contains all possible systematics
+    # and which group they belong to (for look-up).
+    syst_dict = SystDictionary("syst_dictionary.json")
+    grouped_table = {}
+    for g in syst_dict.getGroups():
+        grouped_table[g] = dict()
+        for c in columns:
+            grouped_table[g][c] = "0 / 0"
+
+    # If we want grouped data, overwrite our initial table.
+    if args.grouped:
+        table = grouped_table
 
     if args.json_file:
-        table_to_file.storeJSON(table, args.json_file)
+        dict_to_file.storeJSON(table, args.json_file)
     if args.tex_file:
-        table_to_file.storeTEX(table, args.tex_file)
+        dict_to_file.storeTEX(table, args.tex_file)
 
-    for row in rows:
-        for column in columns:
-            print "%s %s %s" % (row, column, dict[row][column])
+    for row in table:
+        for column in table[row]:
+            print "%s \t %s \t %s" % (row, column, table[row][column])

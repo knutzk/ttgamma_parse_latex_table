@@ -37,4 +37,43 @@ class Table():
     def getEntries(self):
         return self._dictionary
 
+
+# Internal function to find a tabular environment. This removes all
+# lines before and after it (including the begin/end commands).
+def _find_tabulars(lines):
+    beginning = [i for (i, string) in enumerate(lines) if "\\begin{tabular}" in string]
+    del lines[:beginning[0]+1]
+    end = [i for (i, string) in enumerate(lines) if "\\end{tabular}" in string]
+    del lines[end[0]:]
+    return lines
+
+
+# This function reads a LaTeX document, parses the first (!) occurence
+# of a 'tabular' object and returns it as a Table object.
+def readFromLatex(tex_file_string):
+    with open(tex_file_string, 'r') as tex_file:
+        lines = tex_file.readlines()
+        # Remove everything but the tabular
+        lines = _find_tabulars(lines)
+        # Remove lines with '\hline'
+        lines = [l for l in lines if l.find("\\hline")]
+        # Remove end-of-line commands and the ' \\'
+        lines = [l.strip()[:-3] for l in lines]
+
+        # Remove the first line which contains the headers, remove all
+        # its whitespace, split it at '&' and save this nicely.
+        headers = lines.pop(0)
+        headers = [h.strip() for h in headers.split('&')]
+        del headers[0]
+
+        lines = [l.split(" & ") for l in lines]
+
+        # Now save everything in a table object
+        table = Table()
+        for h in headers:
+            table.registerColumn(h)
+        for l in lines:
+            table.addRow(l)
+        return table
+
 # end of file

@@ -35,3 +35,17 @@ class SystDictionary():
     # Return a list of all systematics.
     def getSystematics(self):
         return self._systematics
+
+
+# This is the class that does the actual calculation of grouped systematics. We
+# initialise it with the table that contains all values, the dictionary to look
+# up the groups + the columns, so that we don't mix up the column order.
+class SystCalculator():
+    _table = {}
+    _syst_dict = {}
+    _columns = []
+
+    def __init__(self, table, syst_dict, columns):
+        self._table = table
+        self._syst_dict = syst_dict
+        self._columns = columns

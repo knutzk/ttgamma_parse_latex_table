@@ -15,4 +15,6 @@ The parsed info can be outputted in two data formats:
 - tex: this basically redoes a _tabular_ environment and outputs the dictionary into it
 - json: dump the dictionary into a json-formatted file
 
-Grouping of systematics is not yet implemented...
+The grouping of systematics is entirely based on the file [syst_dictionary.json]. This file contains JSON-formatted groups of systematics, which are used as a look-up table by the table parser. The following options are available:
+- grouped: perform the grouping as defined in the dictionary file
+- ungrouped: do _not_ perform grouping; this parses the input, but doesn't manipulate it. Good for writing into different formats.

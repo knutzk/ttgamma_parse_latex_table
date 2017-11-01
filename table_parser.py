@@ -39,6 +39,15 @@ if __name__ == "__main__":
     columns = table.getColumns()
     table = table.getEntries()
 
+    # Load a JSON dictionary that contains all possible systematics
+    # and which group they belong to (for look-up).
+    syst_dict = SystDictionary("syst_dictionary.json")
+    grouped_table = {}
+    for g in syst_dict.getGroups():
+        grouped_table[g] = dict()
+        for c in columns:
+            grouped_table[g][c] = "0 / 0"
+
     if args.json_file:
         dict_to_file.storeJSON(table, args.json_file)
     if args.tex_file:

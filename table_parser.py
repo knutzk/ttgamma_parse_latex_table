@@ -2,6 +2,7 @@
 
 import sys
 import latex_table
+import table_to_file
 
 if __name__ == "__main__":
     # Parse arguments
@@ -31,11 +32,9 @@ if __name__ == "__main__":
     dict = table.getEntries()
 
     if args.json_file:
-        print "Printing to JSON file not yet implemented"
-        sys.exit(1)
+        table_to_file.storeJSON(table, args.json_file)
     if args.tex_file:
-        print "Printing to TEX file not yet implemented"
-        sys.exit(1)
+        table_to_file.storeTEX(table, args.tex_file)
 
     for row in rows:
         for column in columns:

@@ -2,6 +2,7 @@
 
 import sys
 import latex_table
+from syst_calculator import SystDictionary
 import table_to_file
 
 if __name__ == "__main__":
@@ -23,6 +24,8 @@ if __name__ == "__main__":
 
     if args.grouped:
         print "Grouping systematics is not yet implemented"
+        dict = SystDictionary("syst_dictionary.json")
+        systs = dict.getSystematics()
         sys.exit(1)
 
     table = latex_table.readFromLatex(args.input)

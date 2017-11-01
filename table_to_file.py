@@ -19,4 +19,12 @@ def storeTEX(table, file_string):
             fp.write("\\\\\n")
             break
         fp.write("  \\hline\n")
+
+        # Now read all rows and output them as well
+        for row in table.getEntries():
+            fp.write("  %s " % (row))
+            for column in table.getEntries()[row]:
+                fp.write("& %s " % table.getEntries()[row][column])
+            fp.write("\\\\\n")
+        fp.write("  \\hline\n")
         fp.write("\\end{tabular}\n")

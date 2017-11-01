@@ -2,7 +2,7 @@
 
 import sys
 import latex_table
-from syst_calculator import SystDictionary
+from syst_calculator import SystDictionary, SystCalculator
 import dict_to_file
 
 
@@ -37,11 +37,7 @@ if __name__ == "__main__":
     # Load a JSON dictionary that contains all possible systematics
     # and which group they belong to (for look-up).
     syst_dict = SystDictionary("syst_dictionary.json")
-    grouped_table = {}
-    for g in syst_dict.getGroups():
-        grouped_table[g] = dict()
-        for c in columns:
-            grouped_table[g][c] = "0 / 0"
+    grouped_table = SystCalculator(table, syst_dict, columns).calcSystematics()
 
     # If we want grouped data, overwrite our initial table.
     if args.grouped:

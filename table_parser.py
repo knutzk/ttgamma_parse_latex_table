@@ -23,11 +23,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.grouped:
-        print "Grouping systematics is not yet implemented"
-        dict = SystDictionary("syst_dictionary.json")
-        systs = dict.getSystematics()
-        sys.exit(1)
 
     # ======================================================
     # Start the main execution here
@@ -47,6 +42,10 @@ if __name__ == "__main__":
         grouped_table[g] = dict()
         for c in columns:
             grouped_table[g][c] = "0 / 0"
+
+    # If we want grouped data, overwrite our initial table.
+    if args.grouped:
+        table = grouped_table
 
     if args.json_file:
         dict_to_file.storeJSON(table, args.json_file)

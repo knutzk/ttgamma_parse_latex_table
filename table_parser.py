@@ -3,7 +3,7 @@
 import sys
 import latex_table
 from syst_calculator import SystDictionary
-import table_to_file
+import dict_to_file
 
 if __name__ == "__main__":
     # Parse arguments
@@ -35,9 +35,9 @@ if __name__ == "__main__":
     dict = table.getEntries()
 
     if args.json_file:
-        table_to_file.storeJSON(table, args.json_file)
+        dict_to_file.storeJSON(table.getEntries(), args.json_file)
     if args.tex_file:
-        table_to_file.storeTEX(table, args.tex_file)
+        dict_to_file.storeTEX(table.getEntries(), args.tex_file)
 
     for row in rows:
         for column in columns:

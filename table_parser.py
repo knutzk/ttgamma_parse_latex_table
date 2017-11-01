@@ -34,9 +34,7 @@ if __name__ == "__main__":
     if args.json_file:
         table_to_file.storeJSON(table, args.json_file)
     if args.tex_file:
-        print "Printing to TEX file not yet implemented"
         table_to_file.storeTEX(table, args.tex_file)
-        sys.exit(1)
 
     for row in rows:
         for column in columns:

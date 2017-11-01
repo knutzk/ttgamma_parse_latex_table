@@ -70,3 +70,10 @@ class SystCalculator():
         for col in self._columns:
             row[col] = self._calc_value(group, col)
         return row
+
+    # Calculate up/down variations for all groups.
+    def calcSystematics(self):
+        table = {}
+        for g in self._syst_dict.getGroups():
+            table[g] = self._calc_row(g)
+        return table

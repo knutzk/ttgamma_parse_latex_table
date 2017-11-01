@@ -32,18 +32,14 @@ if __name__ == "__main__":
     # ======================================================
     # Start the main execution here
     # ======================================================
-    table = latex_table.readFromLatex(args.input)
+    table = latex_table.readFromLatex(args.input).getEntries()
 
 
     if args.json_file:
-        dict_to_file.storeJSON(table.getEntries(), args.json_file)
+        dict_to_file.storeJSON(table, args.json_file)
     if args.tex_file:
-        dict_to_file.storeTEX(table.getEntries(), args.tex_file)
+        dict_to_file.storeTEX(table, args.tex_file)
 
-    rows = table.getRows()
-    columns = table.getColumns()
-    dict = table.getEntries()
-
-    for row in rows:
-        for column in columns:
-            print "%s %s %s" % (row, column, dict[row][column])
+    for row in table:
+        for column in table[row]:
+            print "%s \t %s \t %s" % (row, column, table[row][column])

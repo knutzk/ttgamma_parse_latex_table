@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from math import sqrt
 import json
 
 # A simple class to read in a JSON file that holds list of systematic
@@ -35,3 +36,44 @@ class SystDictionary():
     # Return a list of all systematics.
     def getSystematics(self):
         return self._systematics
+
+
+# This is the class that does the actual calculation of grouped systematics. We
+# initialise it with the table that contains all values, the dictionary to look
+# up the groups + the columns, so that we don't mix up the column order.
+class SystCalculator():
+    _table = {}
+    _syst_dict = {}
+    _columns = []
+
+    def __init__(self, table, syst_dict, columns):
+        self._table = table
+        self._syst_dict = syst_dict
+        self._columns = columns
+
+    # Calculate the up/down variations for a given group of systematics and a
+    # column of the table.
+    def _calc_value(self, group, column):
+        plus_var = 0.
+        minus_var = 0.
+        for systematic in self._syst_dict.lookupGroup(group):
+            # Make sure that the dictionary entry exists
+            if systematic not in self._table: continue
+            if column not in self._table[systematic]: continue
+            plus_var += float(self._table[systematic][column][0])
+            minus_var += float(self._table[systematic][column][1])
+        return (sqrt(plus_var) if plus_var > 0 else 0, sqrt(minus_var) if minus_var > 0 else 0)
+
+    # Calculate all up/down variations for a given systematics group.
+    def _calc_row(self, group):
+        row = {}
+        for col in self._columns:
+            row[col] = self._calc_value(group, col)
+        return row
+
+    # Calculate up/down variations for all groups.
+    def calcSystematics(self):
+        table = {}
+        for g in self._syst_dict.getGroups():
+            table[g] = self._calc_row(g)
+        return table

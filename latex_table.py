@@ -23,6 +23,8 @@ class Table():
         self._rows.append(row_name)
         self._dictionary[row_name] = dict()
         for (i, e) in enumerate(entries):
+            # Split values into pair and strip whitespaces
+            e = [ee.strip() for ee in e.split("/")]
             self._dictionary[row_name][self._columns[i]] = e
 
     # Give me the list of rows.

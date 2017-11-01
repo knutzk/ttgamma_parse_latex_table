@@ -28,6 +28,10 @@ class SystDictionary():
     def lookupGroup(self, group):
         return self._dict[group]
 
+    # Return a list of all groups.
+    def getGroups(self):
+        return self._groups
+
     # Return a list of all systematics.
     def getSystematics(self):
         return self._systematics

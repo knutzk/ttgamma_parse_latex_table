@@ -57,10 +57,12 @@ def readFromLatex(tex_file_string):
         lines = _find_tabulars(lines)
         # Remove lines with '\hline'
         lines = [l for l in lines if l.find("\\hline")]
-        # Remove end-of-line commands and the ' \\'
-        lines = [l.strip()[:-3] for l in lines]
+        # Remove any '\\' characters
+        lines = [l.replace("\\","") for l in lines]
+        # Remove whitespaces/end-of-line commands
+        lines = [l.strip() for l in lines]
 
-        # Remove the first line which contains the headers, remove all
+        # Remove the first line which contains the headers. Remove all
         # its whitespace, split it at '&' and save this nicely.
         headers = lines.pop(0)
         headers = [h.strip() for h in headers.split('&')]

@@ -3,9 +3,6 @@
 	"Signal Strength",
 	"PPT prompt",
 	"Luminosity",
-	"MET_SoftTrk_ResoPara_SN",
-	"MET_SoftTrk_ResoPerp_SN",
-	"MET_SoftTrk_Scale_SN",
 	"pileup_SN",
 	"Hfake bkg",
 	"PPT hfake",
@@ -186,6 +183,11 @@
     ],
     "jet_vertex_tagging": [
 	"jvt_SN"
+    ],
+    "met": [
+	"MET_SoftTrk_ResoPara_SN",
+	"MET_SoftTrk_ResoPerp_SN",
+	"MET_SoftTrk_Scale_SN"
     ],
     "muon_efficiencies": [
 	"leptonSF_MU_SF_Trigger_STAT_SN",

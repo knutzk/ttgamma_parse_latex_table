@@ -25,7 +25,6 @@
 	"JET_21NP_JET_Pileup_RhoTopology_SN",
 	"JET_21NP_JET_PunchThrough_MC15_SN",
 	"JET_21NP_JET_SingleParticle_HighPt_SN",
-	"MUON_SCALE_SN",
 	"JET_JER_SINGLE_NP_SN",
 	"MET_SoftTrk_ResoPara_SN",
 	"MET_SoftTrk_ResoPerp_SN",
@@ -195,6 +194,9 @@
   "MUON_MS_SN",
   "MUON_SAGITTA_RESBIAS_SN",
   "MUON_SAGITTA_RHO_SN"
+    ],
+    "muon_energy_scale": [
+	"MUON_SCALE_SN"
     ],
     "photon_efficiencies": [
 	"ph_SF_eff_SN",

@@ -62,7 +62,9 @@ class SystCalculator():
             if column not in self._table[systematic]: continue
             plus_var += float(self._table[systematic][column][0])
             minus_var += float(self._table[systematic][column][1])
-        return (sqrt(plus_var) if plus_var > 0 else 0, sqrt(minus_var) if minus_var > 0 else 0)
+        plus_var = sqrt(plus_var) if plus_var > 0 else 0
+        minus_var = sqrt(minus_var) if minus_var > 0 else 0
+        return (plus_var, minus_var)
 
     # Calculate all up/down variations for a given systematics group.
     def _calc_row(self, group):

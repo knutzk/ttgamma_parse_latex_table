@@ -3,7 +3,6 @@
 	"Signal Strength",
 	"PPT prompt",
 	"Luminosity",
-	"JET_JER_SINGLE_NP_SN",
 	"MET_SoftTrk_ResoPara_SN",
 	"MET_SoftTrk_ResoPerp_SN",
 	"MET_SoftTrk_Scale_SN",
@@ -160,6 +159,9 @@
 	"leptonSF_EL_SF_Reco_SN",
 	"leptonSF_EL_SF_ID_SN",
 	"leptonSF_EL_SF_Isol_SN"
+    ],
+    "jet_energy_resolution": [
+	"JET_JER_SINGLE_NP_SN"
     ],
     "jet_energy_scale": [
 	"JET_21NP_JET_BJES_Response_SN",

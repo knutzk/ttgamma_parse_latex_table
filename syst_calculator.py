@@ -56,13 +56,18 @@ class SystCalculator():
     def _calc_value(self, group, column):
         plus_var = 0.
         minus_var = 0.
+        syst_counter = 0
         for systematic in self._syst_dict.lookupGroup(group):
             # Make sure that the dictionary entry exists
             if systematic not in self._table: continue
             if column not in self._table[systematic]: continue
             plus_var += float(self._table[systematic][column][0])
             minus_var += float(self._table[systematic][column][1])
-        return (sqrt(plus_var) if plus_var > 0 else 0, sqrt(minus_var) if minus_var > 0 else 0)
+            syst_counter += 1
+        plus_var = sqrt(plus_var) if plus_var > 0 else 0
+        minus_var = - sqrt(minus_var) if minus_var > 0 else 0
+        print "Extracted %s systematics to calculate '%s' for column '%s'" % (syst_counter, group, column)
+        return (round(plus_var, 3), round(minus_var, 3))
 
     # Calculate all up/down variations for a given systematics group.
     def _calc_row(self, group):

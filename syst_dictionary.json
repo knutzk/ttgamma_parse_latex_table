@@ -3,7 +3,6 @@
 	"Signal Strength",
 	"PPT prompt",
 	"Luminosity",
-	"pileup_SN",
 	"Hfake bkg",
 	"PPT hfake",
 	"PPT efake",
@@ -209,6 +208,9 @@
     ],
     "muon_energy_scale": [
 	"MUON_SCALE_SN"
+    ],
+    "pileup": [
+	"pileup_SN"
     ],
     "photon_efficiencies": [
 	"ph_SF_eff_SN",

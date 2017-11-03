@@ -7,7 +7,6 @@
 	"MET_SoftTrk_ResoPerp_SN",
 	"MET_SoftTrk_Scale_SN",
 	"pileup_SN",
-	"jvt_SN",
 	"Hfake bkg",
 	"PPT hfake",
 	"PPT efake",
@@ -184,6 +183,9 @@
 	"JET_21NP_JET_Pileup_RhoTopology_SN",
 	"JET_21NP_JET_PunchThrough_MC15_SN",
 	"JET_21NP_JET_SingleParticle_HighPt_SN"
+    ],
+    "jet_vertex_tagging": [
+	"jvt_SN"
     ],
     "muon_efficiencies": [
 	"leptonSF_MU_SF_Trigger_STAT_SN",

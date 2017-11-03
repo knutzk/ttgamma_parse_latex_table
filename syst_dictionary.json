@@ -2,7 +2,6 @@
     "systematics": [
 	"Signal Strength",
 	"PPT prompt",
-	"Luminosity",
 	"Hfake bkg",
 	"PPT hfake",
 	"PPT efake",
@@ -182,6 +181,9 @@
     ],
     "jet_vertex_tagging": [
 	"jvt_SN"
+    ],
+    "luminosity": [
+	"Luminosity"
     ],
     "met": [
 	"MET_SoftTrk_ResoPara_SN",

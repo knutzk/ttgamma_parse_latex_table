@@ -3,8 +3,6 @@
 	"Signal Strength",
 	"PPT prompt",
 	"Luminosity",
-	"EG_SCALE_ALL_SN",
-	"EG_RESOLUTION_ALL_SN",
 	"JET_21NP_JET_BJES_Response_SN",
 	"JET_21NP_JET_EffectiveNP_1_SN",
 	"JET_21NP_JET_EffectiveNP_2_SN",
@@ -170,6 +168,12 @@
 	"bTagSF_Continuous_eigenvars_Light77_SN",
 	"bTagSF_Continuous_eigenvars_Light78_SN",
 	"bTagSF_Continuous_eigenvars_Light79_SN"
+    ],
+    "egamma_resolution": [
+	"EG_RESOLUTION_ALL_SN"
+    ],
+    "egamma_scale": [
+	"EG_SCALE_ALL_SN"
     ],
     "electron_efficiencies": [
 	"leptonSF_EL_SF_Trigger_SN",
